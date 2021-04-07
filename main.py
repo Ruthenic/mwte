@@ -1,13 +1,24 @@
 import readchar
 import os
+import sys
 def clearscreen(): 
     if os.name == 'nt': 
         os.system('cls') 
     else: 
         os.system('clear') 
-text = [['T', 'e', 's', 't'], ['T', 'e', 's', 't'], ['T', 'e', 's', 't']]
+try:
+    filename = sys.argv[1]
+except:
+    filename = ''
+text = []
+if not filename == "":
+    with open(filename) as f:
+        for line in f:
+            text.append(list(line))
+else:
+    text.append([])
+#text = [['T', 'e', 's', 't'], ['T', 'e', 's', 't'], ['T', 'e', 's', 't']]
 cx,cy = 0,0
-filename = ''
 while True:
     dx,dy = 0,0
     for i in text:
